@@ -19,9 +19,8 @@ func Init(cfg *config.Config) (*DB, error) {
 		cfg.DB.Port,
 		cfg.DB.User,
 		cfg.DB.Password,
-		cfg.DB.Name)
-
-	fmt.Println(dsn)
+		cfg.DB.Name,
+	)
 
 	gormDB, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
@@ -29,6 +28,5 @@ func Init(cfg *config.Config) (*DB, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	return &DB{gormDB}, nil
 }

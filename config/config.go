@@ -28,3 +28,12 @@ func Load() (*Config, error) {
 	}
 	return &cfg, nil
 }
+
+func LoadDB() (*DBConfig, error) {
+
+	var cfg DBConfig
+	if err := envdecode.Decode(&cfg); err != nil {
+		return nil, err
+	}
+	return &cfg, nil
+}
